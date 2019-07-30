@@ -1,5 +1,7 @@
 package com.ilifesmart.model;
 
+import android.util.Log;
+
 import androidx.lifecycle.ViewModel;
 
 public class MainViewModel extends ViewModel {
@@ -25,6 +27,7 @@ public class MainViewModel extends ViewModel {
 	protected void onCleared() {
 		super.onCleared();
 
+		Log.d("BBBB", "onCleared: ");
 		// chance to clear the memories.
 	}
 }
