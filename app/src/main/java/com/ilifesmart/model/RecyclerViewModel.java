@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.inject.Inject;
+
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -16,6 +18,7 @@ public class RecyclerViewModel extends ViewModel {
 	private long mInitialTime = SystemClock.elapsedRealtime();
 	private List<String> beans = new ArrayList<>();
 
+	@Inject
 	public RecyclerViewModel() {
 		Timer timer = new Timer();
 		timer.scheduleAtFixedRate(new TimerTask() {
@@ -26,6 +29,7 @@ public class RecyclerViewModel extends ViewModel {
 				datas.postValue(getBeans());
 			}
 		}, 1000, 2000);
+
 
 	}
 

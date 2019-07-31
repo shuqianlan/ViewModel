@@ -1,0 +1,32 @@
+
+WuKong
+
+```
+# wu悟空依赖金箍棒，因此金箍棒有@Inject注解
+# 因为两个类都需要Dagger创建， 所以构造函数都有@Inject注解
+public class WuKong {
+
+	@Inject
+	GinGuBang ginGuBang;
+
+	@Inject
+	public WuKong() {
+
+	}
+
+	public String useGinGuBang() {
+		return this.ginGuBang.use();
+	}
+}
+
+##
+public class GinGuBang {
+
+	@Inject
+	public GinGuBang() { }
+
+	public String use() {
+		return "user Jing gu bang";
+	}
+}
+```

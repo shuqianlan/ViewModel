@@ -15,12 +15,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
+import com.ilifesmart.dagger2.DaggerXiYouComponent;
+import com.ilifesmart.dagger2.WuKong;
+import com.ilifesmart.dagger2.XiYouComponent;
+import com.ilifesmart.dagger2.XiYouModule;
 import com.ilifesmart.model.LiveDataTimerViewModel;
 import com.ilifesmart.model.MainViewModel;
 import com.ilifesmart.model.RecyclerViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
 	private MainViewModel mMainViewModel;
 	private LiveDataTimerViewModel mLiveDataModel;
 	private RecyclerViewModel mViewModel;
+
+	@Inject
+	WuKong mWuKong;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +104,11 @@ public class MainActivity extends AppCompatActivity {
 		});
 		mRecycler.setAdapter(adapter);
 
+		XiYouComponent xiYouComponent = DaggerXiYouComponent.builder()
+						.xiYouModule(new XiYouModule())
+						.build();
+		xiYouComponent.inject(this);
+		Log.d(TAG, "initView: wukong.useGinGuBang " + mWuKong.useGinGuBang());
 	}
 
 	private void setScore(TextView view, int score) {
